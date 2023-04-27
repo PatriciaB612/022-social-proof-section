@@ -73,13 +73,20 @@ body {
   font-family: var(--ff-primary);
   font-size: var(--fs-400);
   color: var(--clr-primary-700);
-  margin: 3rem 0;
+  margin: 0;
   text-align: center;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-image: url(images/bg-pattern-top-mobile.svg),
+    url(images/bg-pattern-bottom-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: top left, bottom right;
 }
 
 main {
   width: 85%;
-  margin: 0 auto;
+  margin: 3em auto;
 }
 
 /* Typography */
@@ -127,21 +134,14 @@ h2 {
 
 .rating {
   background-color: var(--clr-neutral-200);
-  margin-bottom: 1em;
+  margin: 0 auto 1em;
   padding: 1em;
   max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.rating p::before {
-  content: '';
-  background-image: url(images/icon-star.svg);
-  max-width: 90px;
-  height: 1rem;
-  margin: 0 auto;
-  display: block;
-  background-repeat: space;
+.icons {
+  display: flex;
+  gap: 0.5em;
 }
 
 /* reviews */
@@ -151,21 +151,33 @@ h2 {
   border-radius: 50px;
 }
 
+.user-info {
+  margin-bottom: 1.5em;
+}
+
 .review {
   background-color: var(--clr-primary-700);
   color: var(--clr-neutral-300);
   text-align: left;
-  padding: 3em 2em;
+  padding: 2em;
   border-radius: 5px;
   margin: 2em 0;
 }
 
 @media (min-width: 600px) {
+  .rating:first-child {
+    margin: 0 auto 1em 0;
+  }
+
+  .rating:last-child {
+    margin: 0 0 1em auto;
+  }
+}
+
+@media (min-width: 850px) {
   body {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    margin: 0;
+    background-image: url(images/bg-pattern-top-desktop.svg),
+      url(images/bg-pattern-bottom-desktop.svg);
   }
 
   main {
@@ -175,7 +187,8 @@ h2 {
   .intro {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 0;
+    grid-gap: 4em;
+    margin-bottom: 2em;
   }
 
   .intro-main {
@@ -188,13 +201,30 @@ h2 {
     max-width: 430px;
   }
 
+  .intro-ratings {
+    margin-top: auto;
+  }
+
   .rating {
-    padding: 0.25em;
+    padding: 0.5em;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+    max-width: 400px;
   }
 
   .reviews {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2em;
+  }
+
+  .review:nth-child(2) {
+    transform: translateY(1em);
+  }
+
+  .review:nth-child(3) {
+    transform: translateY(2em);
   }
 }
